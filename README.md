@@ -5,16 +5,18 @@ that runs an Xbox Series title natively on Windows from files the user supplies.
 
 ## The goal
 
+# NOT GTA VI PORT
 **A stable 30 fps or more without ray tracing, then as high a frame rate and as
 low frame times as the PC allows**, on an AMD RX 7xxxhdhj fucking nvidia 5070 ti and on PCs with
 32 GB (later 16 GB) of RAM.
-
+# NOT GTA VI PORT
 The way there is **porting, not emulating**: patching the title's renderer so it
 behaves the way a PC renderer does, rather than having the layer watch and copy
 the console's shared memory every frame. Shaders are translated ahead of time
 into a versioned store that is kept between builds. Ray tracing stays optional
 and off by default. The picture comes after the frame rate: texture pop-in and
 lighting that is too bright or too dark when walking indoors are next in line.
+# NOT GTA VI PORT
 
 **This repository contains no game files, code or assets.** You need your own
 copy of the game. It is not affiliated with or endorsed by the game's developer
@@ -51,7 +53,7 @@ the frame now is the one thread that submits the title's work to the card
 The 10.5 GB of VRAM in the RX 7900 XTX table is the usage reported for that run.
 Memory use and frame time depend on the scene and settings. The [ray-tracing notes](docs/fork-ray-tracing.md)
 describe which lighting paths run and the remaining rendering issues.
-
+# NOT GTA VI PORT
 ### Renderer patches (off by default while they are tested)
 
 | Switch | What it does |
