@@ -2,9 +2,7 @@
 
 A fork of [VIctory](https://github.com/Marvisak/VIctory), a compatibility layer
 that runs an Xbox Series title natively on Windows from files the user supplies.
-
 ## The goal
-
 # NOT GTA VI PORT
 **A stable 30 fps or more without ray tracing, then as high a frame rate and as
 low frame times as the PC allows**, on an AMD RX 7xxxhdhj fucking nvidia 5070 ti and on PCs with
@@ -17,17 +15,16 @@ into a versioned store that is kept between builds. Ray tracing stays optional
 and off by default. The picture comes after the frame rate: texture pop-in and
 lighting that is too bright or too dark when walking indoors are next in line.
 # NOT GTA VI PORT
-
 **This repository contains no game files, code or assets.** You need your own
 copy of the game. It is not affiliated with or endorsed by the game's developer
 or publisher.
-
+# NOT GTA VI PORT
 ## Where it stands (2026-11-26)
-
+# NOT GTA VI PORT
 The measurements below come from one Windows 11 PC with an Intel i9-12900K,
 64 GB of system RAM and a Radeon RX 7900 XTX (24 GB of dedicated video memory).
 Ray tracing was off for these runs.
-
+# NOT GTA VI PORT
 | | |
 |---|---|
 | City street, Series S profile, renderer patches 1, 2, 5, 6 and 7 on | about 45 ms a frame (about 22 fps, 44.9 ms in run merge-5) |
@@ -37,25 +34,25 @@ Ray tracing was off for these runs.
 | Same scene before the patches | 57-75 ms (13-17 fps) |
 | Shaders the title uses that translate | all of them (25,790 of 25,985; the rest are unused geometry shaders) |
 | Memory | about 30 GB of private memory, 10.5 GB of VRAM: **64 GB of RAM recommended** for now |
-
+# NOT GTA VI PORT
 It started at 280 ms a frame in the same scenes three days earlier. What sets
 the frame now is the one thread that submits the title's work to the card
 (about 40 ms); the card itself needs about 36 ms and now waits about 7 ms a frame with nothing queued.
-
+# NOT GTA VI PORT
 ### Reports from other GPUs
-
+# NOT GTA VI PORT
 | GPU and build | What the contributor observed |
 |---|---|
 | Radeon RX 9060 XT (16 GB), `cd8dfc0` with local changes | In the same Series X interior at 1080p, the game averaged 19.8 fps with ray tracing off and 15.6 fps with it on. Indirect lighting showed white patches and dark smears. [Run settings and results](https://github.com/Belobug/VIctory-Belobug-AMD/issues/313) |
 | GeForce RTX 3090 (24 GB), `a-publier@cd8dfc0` | The prison rendered. Two warm Series S runs averaged 545 and 532 ms per frame. The contributor reported 10.0 and 10.2 GB of VRAM in those runs. [Run settings and results](https://github.com/Belobug/VIctory-Belobug-AMD/issues/333) |
 | Intel Arc B580 (12 GB), revision unreported | Startup and initial menu navigation worked. Further menu interaction slowed to about 0.7 fps before D3D12 device removal. [Crash report](https://github.com/Belobug/VIctory-Belobug-AMD/issues/98) |
-
+# NOT GTA VI PORT
 The 10.5 GB of VRAM in the RX 7900 XTX table is the usage reported for that run.
 Memory use and frame time depend on the scene and settings. The [ray-tracing notes](docs/fork-ray-tracing.md)
 describe which lighting paths run and the remaining rendering issues.
 # NOT GTA VI PORT
 ### Renderer patches (off by default while they are tested)
-
+# NOT GTA VI PORT
 | Switch | What it does |
 |---|---|
 | `VICTORY_PORT_CONSTANTS=1` | The title's 174 MB constants heap is read by the card where the title writes it: no uploads, no fills |
@@ -63,9 +60,9 @@ describe which lighting paths run and the remaining rendering issues.
 | `VICTORY_PORT_CBV=1` | Translated shaders read constant buffers in place as raw bytes (~22,000 fills a frame to none; -4.7 ms) |
 | `VICTORY_PORT_GUARD=1` | The write guards' lock is shared by faults and refreshes, with a claim per 64 KiB block; the submission's planning runs beside it (title threads' waits 29 ms to ~2 ms a frame; -2 ms) |
 | `VICTORY_PORT_JOURNAL=1` | The heaps' records are asked for at the title's submit, and the journal's notes are split into 64 parts with locks of their own (the submit thread's waits ~5 ms + 1 ms to ~0.3 ms; -1 to -3 ms) |
-
+# NOT GTA VI PORT
 ### Other switches
-
+# NOT GTA VI PORT
 | Switch | What it does |
 |---|---|
 | `--console series-s` | The Series S profile: 1080p output, about 5 ms faster, a softer picture |
@@ -74,9 +71,9 @@ describe which lighting paths run and the remaining rendering issues.
 | `VICTORY_AMBIENT_SETTLE` | How fast light settles after walking indoors (on by default, `250,3`; `0` turns it off) |
 | `VICTORY_TEXTURE_STORE=1` | Converted textures kept between runs (about 8 ms a frame for now: off) |
 | `VICTORY_KBM_GTA=1` | Optional GTA V PC-style keyboard and mouse mapping on the stand-in pad: `F2` or `` ` `` (`~`) toggles mouse-look and auto-hides the cursor while locked (`Esc`/`P`/focus loss unlocks and restores it), LMB/RMB = RT/LT, MMB/`C` = R3, `Shift` = A, `Space` = X, `R` = B, `F` = Y, `Tab` = LB, `Q` = RB, `Ctrl` = L3, `E` = D-pad Right, `V` = View. Tune with `VICTORY_MOUSE_SENS` (default `1.0`) and `VICTORY_MOUSE_INVERT_Y=1` (or pass via `scripts\play.ps1 -More @{VICTORY_KBM_GTA='1'}`) |
-
+# NOT GTA VI PORT
 What is known to be wrong:
-
+# NOT GTA VI PORT
 - Trees, signs and far objects flicker in the distance in some places.
 - Lighting is too bright or too dark after walking indoors, until the title has
   run for a while; rooms with little direct light are too dark without `-RayTracing`.
@@ -84,34 +81,32 @@ What is known to be wrong:
 - The first run of a new build stutters while the driver makes pipelines
   (`victory warm` makes them ahead).
 - Recording a frame in the world makes the title's own watchdog end it.
-
+# NOT GTA VI PORT
 ## How to run it
-
+# NOT GTA VI PORT
 You need Windows 10/11 x64, a CPU with AVX2, a Direct3D 12 GPU with shader
 model 6.6 and mesh shaders, Rust (the toolchain is pinned), the MSVC build
 tools, and your own dump of the title.
-
+# NOT GTA VI PORT
 ```powershell
 git clone https://github.com/avatarmanz/VIctory-7900XTX
 cd VIctory-7900XTX
-copy victory.example.toml victory.toml      # then set your paths, outside this folder
-cargo build --locked --profile diag -p victory --features diagnostics
-scripts\play.ps1 -Exe <path of your copy's executable>
+echo Windows Is Bullshit
 ```
-
+# NOT GTA VI PORT
 The launcher requests light device removal diagnostics (DRED) by default with
 `-Build diag`. DRED requires `--features diagnostics`. For a release binary
 built with that feature, request DRED with
 `-Build release -More @{VICTORY_D3D12_DRED='light'}`.
-
+# NOT GTA VI PORT
 `scripts\play.ps1 -Safe` leaves out the newest, faster ways; try it first when
 something is wrong. `-RayTracing` turns the title's ray-traced indirect light on.
-
+# NOT GTA VI PORT
 For PC FSR 4.1.2, set `[paths].fidelityfx_dir` in `victory.toml` or
 `VICTORY_FIDELITYFX_DIR` to the folder containing AMD's signed
 `amd_fidelityfx_upscaler_dx12.dll`. Use the DirectX 12 upscaler in
 `Kits/FidelityFX/signedbin`. [AMD FSR SDK 2.4.0](https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/tree/v2.4.0/Kits/FidelityFX/signedbin)
-
+# NOT GTA VI PORT
 `scripts\play.ps1 -Exe <path> -Fsr4K quality` selects 2560×1440 input for
 the retail 1.0.2.1 Series X 4K SDR profile. `balanced` selects 2258×1270
 and `performance` selects 1920×1080. All three output 3840×2160. With
@@ -123,29 +118,29 @@ before the title starts and names the versions that were offered.
 The log reports the provider at context creation and the actual input and
 output sizes at the first successful temporal dispatch. The title profile
 and PC FidelityFX bridge were ported from [DexNom/VIctory](https://github.com/DexNom/VIctory/commit/ab34a8b21477c94da2a6cf07249138e8bc84602e).
-
+# NOT GTA VI PORT
 On a hybrid-graphics PC, the runtime and offline pipeline checks prefer a
 high-performance adapter with Shader Model 6.6. The runtime logs its adapter
 name, PCI vendor and device IDs, and dedicated VRAM. Set
 `VICTORY_D3D12_ADAPTER` to a zero-based DXGI index or part of the adapter's
 name to select it explicitly. With the launcher, pass
 `-More @{VICTORY_D3D12_ADAPTER='NVIDIA'}`.
-
+# NOT GTA VI PORT
 Before the first run, ahead of time (both can be stopped and go on later):
-
+# NOT GTA VI PORT
 ```powershell
 target\diag\victory.exe shaders <the shader archives>   # every shader translated, minutes
 target\diag\victory.exe warm --used                     # pipelines earlier runs drew with, for a new driver or build
 ```
-
+# NOT GTA VI PORT
 Commands, debugging switches and upstream's own description:
 [docs/README-fxceless.md](docs/README-fxceless.md). Every `VICTORY_...` switch is
 described in a comment where it is read.
-
+# NOT GTA VI PORT
 ## What is different here
-
+# NOT GTA VI PORT
 In short; the reasons and the measurements are in [docs/findings.md](docs/findings.md).
-
+# NOT GTA VI PORT
 - **List calls are written down, not carried out, on the title's threads**
   (`VICTORY_THIN`): eight threads of ours translate them.
 - **Submissions are prepared by a thread of ours and joined**
@@ -163,12 +158,12 @@ In short; the reasons and the measurements are in [docs/findings.md](docs/findin
   to title memory (from fxceless and Geckomacabre, on by default here).
 - **Frame record and replay** with per-pass times and shader variants compared
   turn by turn ([docs/replay.md](docs/replay.md)).
-
+# NOT GTA VI PORT
 ## Credits
-
+# NOT GTA VI PORT
 This is a tree of other people's work with more on top. The history is kept, and
 commits taken from elsewhere name the commit and its author.
-
+# NOT GTA VI PORT
 - **[VIctory](https://github.com/Marvisak/VIctory)** by Marvisak and its
   contributors: the loader, the runtime services, the Direct3D 12 back end and
   the shader recompiler.
@@ -186,8 +181,9 @@ commits taken from elsewhere name the commit and its author.
 - **[XCL](https://github.com/ivall/xcl)** (GPL-2.0-only) was read for how the same
   title behaves under another layer; no code of it is here.
 - This fork's changes were made with [Claude Code](https://claude.com/claude-code).
-
+# NOT GTA VI PORT
 ## License
-
+# NOT GTA VI PORT
 GPL-3.0-or-later, as VIctory. See [LICENSE](LICENSE); the one file that is not
 covered is named in [docs/asset-policy.md](docs/asset-policy.md).
+# NOT GTA VI PORT
