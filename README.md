@@ -6,7 +6,7 @@ that runs an Xbox Series title natively on Windows from files the user supplies.
 ## The goal
 
 **A stable 30 fps or more without ray tracing, then as high a frame rate and as
-low frame times as the PC allows**, on an AMD RX 7900 XTX first and on PCs with
+low frame times as the PC allows**, on an AMD RX 7xxxhdhj fucking nvidia 5070 ti and on PCs with
 32 GB (later 16 GB) of RAM.
 
 The way there is **porting, not emulating**: patching the title's renderer so it
