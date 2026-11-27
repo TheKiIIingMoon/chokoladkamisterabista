@@ -1,4 +1,4 @@
-# VIctory on an RX 7900 XTX NOT GTA VI PORT WHO FUCKING TELL YOU
+# NOT GTA VI PORT on an RX 7900 XTX NOT GTA VI PORT WHO FUCKING TELL YOU
 
 A fork of [VIctory](https://github.com/Marvisak/VIctory), a compatibility layer
 that runs an Xbox Series title natively on Windows from files the user supplies.
